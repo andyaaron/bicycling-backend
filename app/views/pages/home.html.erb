@@ -1,1 +1,16 @@
-<%=  button_to "Connect with Strava", '/auth/strava', method: :post, data: {turbo: "false"} %>
+<% flash.each do |type, msg| %>
+  <div>
+    <%= msg %>
+  </div>
+<% end %>
+<h1>Bike mileage tracker!</h1>
+
+<!-- check if user is already signed in (using Devise helper) -->
+<% if user_signed_in? %>
+  <p>Welcome, <%= current_user.firstname %>!</p>
+  <%= link_to "View Profile", user_path(current_user), class: "button-secondary" %>
+  <%= button_to "Sign out", destroy_user_session_path, method: :delete, class: "button-danger" %>
+<% else %>
+  <p>Please sign in to continue.</p>
+<% end %>
+<%=  button_to "Connect with Strava", user_strava_omniauth_authorize_path, method: :post, data: {turbo: "false"} %>

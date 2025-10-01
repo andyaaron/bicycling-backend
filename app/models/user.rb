@@ -1,11 +1,22 @@
 # frozen_string_literal: true
 
-class User
-  # Add the following line if you are using Devise
-  # devise :omniauthable, omniauth_providers: [:strava]
+class User < ApplicationRecord
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable,
+         :omniauthable, omniauth_providers: [:strava]
+
+  validates :email, presence: true, unless: :uid_present?
+  validates :password, presence: true, confirmation: true, unless: :uid_present?
 
   # Make sure you have migration columns for:
   # strava_uid:string, strava_access_token:string, strava_refresh_token:string, strava_token_expires_at:datetime
+
+  # Check if the user was authenticated via OmniAuth
+  def uid_present?
+    provider.present? && uid.present?
+  end
 
   def self.from_omniauth(auth)
     # The strava athelete ID is the unique identifier for a user
@@ -22,6 +33,7 @@ class User
     # UPDATE or CREATE USER ATTRIBUTES
     # ----------------------------------------------------
     # 1. Update Profile Info (optional)
+    Rails.logger.info("user in user model: #{user.inspect} \n\n")
     user.email      = auth.info.email if auth.info.email.present?
     user.first_name = auth.info.first_name
     user.last_name  = auth.info.last_name
