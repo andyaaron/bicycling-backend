@@ -81,6 +81,7 @@
     <orderEntry type="library" scope="PROVIDED" name="mini_mime (v1.1.5, mise: 3.4.6) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="minitest (v5.25.5, mise: 3.4.6) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="msgpack (v1.8.0, mise: 3.4.6) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="net-http (v0.6.0, mise: 3.4.6) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="net-imap (v0.5.10, mise: 3.4.6) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="net-pop (v0.1.2, mise: 3.4.6) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="net-protocol (v0.2.2, mise: 3.4.6) [gem]" level="application" />
