@@ -14,3 +14,19 @@
   <p>Please sign in to continue.</p>
 <% end %>
 <%=  button_to "Connect with Strava", user_strava_omniauth_authorize_path, method: :post, data: {turbo: "false"} %>
+
+<% if user_signed_in? %>
+<div class="profile-information">
+  <div class="profile-image">
+    <img src="<%= @activities['profile_medium'] %>" />
+  </div>
+  <div class="profile-info">
+    <p><%= @activities['firstname'] %> <%= @activities['lastname'] %></p>
+    <p><%= @activities['city'] %>, <%= @activities['state'] %></p>
+  </div>
+</div>
+
+<div class="biking-activity">
+
+</div>
+<% end %>
