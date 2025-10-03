@@ -28,13 +28,13 @@ class User < ApplicationRecord
     # Find an existing user by their Strava UID
     user = find_or_initialize_by(strava_uid: strava_uid)
 
-
     # ----------------------------------------------------
     # UPDATE or CREATE USER ATTRIBUTES
     # ----------------------------------------------------
     # 1. Update Profile Info (optional)
     Rails.logger.info("user in user model: #{user.inspect} \n\n")
-    user.email      = auth.info.email if auth.info.email.present?
+    user.email      = "#{auth.uid}@strava.dummy.com"
+    user.password = Devise.friendly_token[0, 20]
     user.first_name = auth.info.first_name
     user.last_name  = auth.info.last_name
 
