@@ -64,9 +64,8 @@ end
 
 gem "httparty", "~> 0.23.1"
 gem 'devise'
-# OmniAuth core and the specific Strava strategy
 gem 'omniauth'
 gem 'omniauth-strava'
-# OmniAuth security patch for Rails
 gem 'omniauth-rails_csrf_protection'
 gem "multi_json", "~> 1.17.0"
+gem "http"
