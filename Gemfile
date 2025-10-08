@@ -62,7 +62,7 @@ group :test do
   gem "selenium-webdriver"
 end
 
-gem "httparty", "~> 0.23.1"
+gem "httparty", "~> 0.23.2"
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-strava'
